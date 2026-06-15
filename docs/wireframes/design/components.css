@@ -1,0 +1,14 @@
+/* ══════════════════════════════════════════════════════════════
+   Bias Component Manifest
+   외부 참조는 이 파일 단일 경로로 고정. 순서 변경 금지.
+   ══════════════════════════════════════════════════════════════ */
+
+@import "./components/01-action.css";
+@import "./components/02-input.css";
+@import "./components/03-display.css";
+@import "./components/04-header.css";
+@import "./components/05-navigation.css";
+@import "./components/06-layout.css";
+@import "./components/07-chat.css";
+@import "./components/08-overlay.css";
+@import "./components/09-feedback.css";

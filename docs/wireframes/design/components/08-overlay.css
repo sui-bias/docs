@@ -1,0 +1,89 @@
+/* ══════════════════════════════════════════════════════════════
+   Overlay — Dialog · Bottom Sheet · Toast
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Dialog ── */
+.dialog {
+  width: 100%; max-width: 320px;
+  background: var(--colors-floated-background);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  animation: dialog-scale-in var(--motion-duration-normal) var(--motion-ease-out);
+}
+.dialog-title {
+  font: var(--typography-4-bold);
+  color: var(--colors-label-normal);
+  text-align: center;
+}
+.dialog-desc {
+  font: var(--typography-6-regular);
+  color: var(--colors-label-neutral);
+  text-align: center; margin-top: 8px;
+}
+.dialog-actions { display: flex; gap: 8px; margin-top: 20px; }
+.dialog-actions > .btn { flex: 1; }
+@keyframes dialog-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-scale-in {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+
+/* ── Bottom Sheet ── */
+.bs-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--colors-dimmer-basic);
+  animation: dialog-fade-in var(--motion-duration-normal) var(--motion-ease-out);
+}
+.bs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1001;
+  max-height: 90vh;
+  background: var(--colors-floated-background);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  display: flex; flex-direction: column;
+  animation: bs-slide-up var(--motion-duration-slow) var(--motion-ease-out);
+}
+.bs-handle {
+  width: 36px; height: 4px;
+  background: var(--colors-grey-300);
+  border-radius: var(--radius-full);
+  margin: 8px auto 4px;
+}
+/* 와이어프레임 내 iphone-frame 컨테이너 안 표시 시 */
+.bs-overlay.bs-in-frame { position: absolute; }
+.bs.bs-in-frame { position: absolute; }
+.bs-header { padding: var(--spacing-4) var(--spacing-4) var(--spacing-3); }
+.bs-title { font: var(--typography-4-bold); color: var(--colors-label-normal); }
+.bs-header-desc { font: var(--typography-6-regular); color: var(--colors-label-neutral); margin-top: 4px; }
+.bs-content { flex: 1; padding: 0 var(--spacing-4); overflow-y: auto; }
+.bs-cta { padding: var(--spacing-4); padding-bottom: calc(var(--spacing-4) + env(safe-area-inset-bottom, 34px)); }
+.bs-cta-double { display: flex; gap: var(--spacing-2); }
+.bs-cta-double > .btn:first-child { flex: 1; }
+.bs-cta-double > .btn:last-child  { flex: 2; }
+@keyframes bs-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+
+/* ── Toast ── */
+.toast {
+  position: fixed; left: 50%; z-index: 2000;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px;
+  background: var(--colors-grey-800);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  font: var(--typography-7-medium);
+  animation: toast-slide-up var(--motion-duration-slow) var(--motion-ease-spring);
+}
+.toast svg { flex-shrink: 0; width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+/* 와이어프레임 내 iphone-frame 컨테이너 안 표시 시 */
+.toast.toast-in-frame { position: absolute; }
+@keyframes toast-slide-up {
+  from { transform: translate(-50%, 20%); opacity: 0; }
+  to   { transform: translate(-50%, 0); opacity: 1; }
+}

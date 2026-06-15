@@ -1,0 +1,82 @@
+/* ══════════════════════════════════════════════════════════════
+   Navigation — Bottom Nav (Bias 5탭) · Tab · Segmented Control
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Bias Bottom Nav — 5탭 (라벨 + 아이콘)
+   탭 순서: 리스트 / 채팅 / 오픈채팅 / 캐릭터생성 / 마이페이지
+   ── */
+.bias-bottom-nav {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  height: 56px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--colors-background);
+  border-top: 1px solid var(--colors-line-normal);
+}
+.bias-nav-item {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2px;
+  border: none; background: transparent; cursor: pointer;
+  color: var(--colors-icon-neutral);
+  transition: color var(--motion-duration-fast);
+  text-decoration: none;
+  padding: 6px 0;
+}
+.bias-nav-item[aria-current="page"] {
+  color: var(--colors-primary-normal);
+}
+.bias-nav-item svg {
+  width: 22px; height: 22px;
+  stroke: currentColor; fill: none; stroke-width: 1.75;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.bias-nav-label {
+  font: var(--typography-caption-2-regular);
+  color: inherit;
+  letter-spacing: 0;
+}
+
+/* 캐릭터 생성 탭 — plus 전용 잠금 상태 */
+.bias-nav-item.locked { color: var(--colors-icon-disable); pointer-events: none; }
+
+
+/* ── Content Tab (화면 내 섹션 구분) ── */
+.tab {
+  display: flex; background: var(--colors-background);
+  border-bottom: 1px solid var(--colors-line-normal);
+}
+.tab-item {
+  flex: 1; background: none; border: none; cursor: pointer;
+  color: var(--colors-label-alternative);
+  position: relative;
+  transition: color var(--motion-duration-fast);
+}
+.tab-item[aria-selected="true"] { color: var(--colors-label-normal); }
+.tab-item[aria-selected="true"]::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--colors-primary-normal);
+}
+.tab-large { height: 48px; }
+.tab-large .tab-item { font: var(--typography-5-semibold); }
+
+
+/* ── Segmented Control ── */
+.segmented {
+  display: inline-flex; padding: 3px; gap: 2px;
+  background: var(--colors-grey-background); border-radius: var(--radius-full);
+}
+.segmented-item {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 14px; height: 32px;
+  border: none; background: transparent; cursor: pointer;
+  color: var(--colors-label-alternative);
+  border-radius: var(--radius-full);
+  font: var(--typography-7-medium);
+  transition: all var(--motion-duration-fast) var(--motion-ease-in-out);
+}
+.segmented-item[aria-selected="true"] {
+  background: var(--colors-background);
+  color: var(--colors-label-normal);
+  box-shadow: var(--shadow-sm);
+}

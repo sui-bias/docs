@@ -1,0 +1,24 @@
+/* ══════════════════════════════════════════════════════════════
+   Header — Topbar
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Top Bar ── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--colors-background);
+  min-height: 56px;
+}
+.topbar-leading { display: flex; align-items: center; gap: var(--spacing-2); }
+.topbar-back {
+  width: 28px; height: 28px;
+  border: none; background: transparent;
+  color: var(--colors-icon-normal);
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.topbar-back svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.topbar-title {
+  font: var(--typography-5-bold); color: var(--colors-label-normal);
+}
+.topbar-trailing { display: flex; align-items: center; gap: var(--spacing-2); }

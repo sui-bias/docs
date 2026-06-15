@@ -1,0 +1,236 @@
+/* ══════════════════════════════════════════════════════════════
+   Display — Badge · Avatar · CharacterCard · AffinityBadge
+             Skeleton · Progress · Stepper · Tooltip · Highlight
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Badge ── */
+.tds-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-family-default);
+  white-space: nowrap; line-height: 1;
+}
+.tds-badge-xsmall { height: 16px; padding: 0 4px; border-radius: var(--radius-xs); font-size: 10px; font-weight: var(--font-weight-medium); }
+.tds-badge-small  { height: 20px; padding: 0 6px; border-radius: var(--radius-xs); font: var(--typography-caption-2-regular); font-weight: var(--font-weight-medium); }
+.tds-badge-medium { height: 24px; padding: 0 8px; border-radius: var(--radius-xs); font: var(--typography-caption-1-medium); }
+.tds-badge-large  { height: 28px; padding: 0 10px; border-radius: var(--radius-xs); font: var(--typography-7-medium); }
+.tds-badge-round  { border-radius: var(--radius-full); }
+.tds-badge-primary { background: var(--colors-primary-normal); color: var(--colors-label-inverse); }
+.tds-badge-dark    { background: var(--colors-grey-800); color: #FFFFFF; }
+.tds-badge-danger  { background: var(--colors-red-500); color: #FFFFFF; }
+.tds-badge-grey    { background: var(--colors-grey-100); color: var(--colors-label-neutral); }
+.tds-badge-light   { background: var(--colors-primary-alternative); color: var(--colors-label-brand); }
+
+/* 플랜 배지 — free / plus */
+.plan-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 18px; padding: 0 6px;
+  border-radius: var(--radius-full);
+  font: var(--typography-caption-2-semibold);
+  white-space: nowrap;
+}
+.plan-badge-free { background: var(--colors-grey-200); color: var(--colors-label-neutral); }
+.plan-badge-plus { background: var(--colors-primary-normal); color: var(--colors-label-inverse); }
+.dark .plan-badge-free { background: var(--colors-grey-700); }
+
+
+/* ── Avatar ── */
+.avatar {
+  border-radius: var(--radius-full);
+  background: var(--colors-grey-200);
+  overflow: hidden; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-xs  { width: 24px; height: 24px; }
+.avatar-sm  { width: 36px; height: 36px; }
+.avatar-md  { width: 48px; height: 48px; }
+.avatar-lg  { width: 64px; height: 64px; }
+.avatar-xl  { width: 88px; height: 88px; }
+
+/* 캐릭터 전용 — 정사각형 + 둥근 모서리 */
+.char-avatar {
+  border-radius: var(--radius-xl);
+  background: var(--colors-grey-200);
+  overflow: hidden; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.char-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.char-avatar-sm  { width: 40px; height: 40px; border-radius: var(--radius-md); }
+.char-avatar-md  { width: 56px; height: 56px; }
+.char-avatar-lg  { width: 80px; height: 80px; border-radius: var(--radius-2xl); }
+.char-avatar-xl  { width: 96px; height: 96px; border-radius: var(--radius-2xl); }
+
+
+/* ── Affinity Badge (친밀도 단계) ── */
+.affinity-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  height: 20px; padding: 0 8px;
+  border-radius: var(--radius-full);
+  font: var(--typography-caption-2-semibold);
+  white-space: nowrap;
+}
+.affinity-badge-lv1 { background: var(--colors-affinity-lv1-bg); color: var(--colors-affinity-lv1); }
+.affinity-badge-lv2 { background: var(--colors-affinity-lv2-bg); color: var(--colors-affinity-lv2); }
+.affinity-badge-lv3 { background: var(--colors-affinity-lv3-bg); color: var(--colors-affinity-lv3); }
+.affinity-badge-lv4 { background: var(--colors-affinity-lv4-bg); color: var(--colors-affinity-lv4); }
+
+
+/* ── Character Card (캐릭터 피드·오픈채팅 그리드) ── */
+.char-card {
+  display: flex; flex-direction: column;
+  border-radius: var(--radius-xl);
+  background: var(--colors-layered-background);
+  border: 1px solid var(--colors-line-normal);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow var(--motion-duration-fast);
+}
+.char-card:hover { box-shadow: var(--shadow-md); }
+.char-card-thumb {
+  aspect-ratio: 3/4;
+  background: var(--colors-grey-200);
+  position: relative; overflow: hidden;
+}
+.char-card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.char-card-body {
+  padding: var(--spacing-3);
+  display: flex; flex-direction: column; gap: var(--spacing-1);
+}
+.char-card-name {
+  font: var(--typography-7-semibold); color: var(--colors-label-normal);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.char-card-desc {
+  font: var(--typography-caption-1-regular); color: var(--colors-label-alternative);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.char-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--spacing-1);
+}
+
+/* 제공 캐릭터 배지 (카드 우상단) */
+.char-card-official {
+  position: absolute; top: var(--spacing-2); right: var(--spacing-2);
+  background: var(--colors-primary-normal); color: var(--colors-label-inverse);
+  height: 18px; padding: 0 6px;
+  border-radius: var(--radius-full);
+  font: var(--typography-caption-2-semibold);
+}
+
+
+/* ── User Card (리스트 탭 — 팔로잉 유저) ── */
+.user-card {
+  display: flex; align-items: center; gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  cursor: pointer;
+  transition: background var(--motion-duration-fast);
+}
+.user-card:hover { background: var(--colors-state-hover); }
+.user-card-info { flex: 1; min-width: 0; }
+.user-card-name {
+  font: var(--typography-6-semibold); color: var(--colors-label-normal);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.user-card-sub {
+  font: var(--typography-7-regular); color: var(--colors-label-alternative);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+
+/* ── Grid Cell (썸네일 카드 범용) ── */
+.grid-cell {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--colors-grey-background);
+  cursor: pointer;
+}
+.grid-cell-3-4 { aspect-ratio: 3/4; }
+.grid-cell-overlay {
+  position: absolute; inset: auto 0 0 0;
+  padding: var(--spacing-2);
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  color: #FFFFFF;
+  font: var(--typography-7-semibold);
+}
+
+
+/* ── Progress Bar ── */
+.progress {
+  width: 100%;
+  background: var(--colors-grey-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.progress-sm { height: 2px; }
+.progress-md { height: 4px; }
+.progress-bar {
+  height: 100%;
+  background: var(--colors-primary-normal);
+  border-radius: inherit;
+  transition: width var(--motion-duration-slow) var(--motion-ease-in-out);
+}
+
+/* ── Skeleton ── */
+.skel {
+  background: var(--colors-layered-background);
+  border-radius: var(--radius-sm);
+  animation: skel-pulse 1.5s ease-in-out infinite;
+}
+.skel-text  { height: 14px; }
+.skel-title { height: 20px; }
+.skel-avatar-md { width: 48px; height: 48px; border-radius: var(--radius-full); }
+.skel-char-avatar { width: 56px; height: 56px; border-radius: var(--radius-xl); }
+@keyframes skel-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+/* ── Stepper ── */
+.stepper {
+  display: flex; align-items: center; gap: var(--spacing-1);
+  padding: var(--spacing-3) var(--spacing-4);
+}
+.stepper-bar {
+  flex: 1; height: 3px;
+  background: var(--colors-grey-200);
+  border-radius: var(--radius-full);
+  transition: background var(--motion-duration-fast);
+}
+.dark .stepper-bar { background: var(--colors-grey-700); }
+.stepper-bar.active { background: var(--colors-primary-normal); }
+.stepper-text {
+  margin-left: var(--spacing-2);
+  font: var(--typography-caption-1-medium); color: var(--colors-label-neutral);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Tooltip ── */
+.tooltip-wrap { position: relative; display: inline-block; }
+.tooltip {
+  position: absolute;
+  background: var(--colors-grey-800);
+  color: #FFFFFF;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-sm);
+  font: var(--typography-7-regular);
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+.tooltip-top { bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); }
+
+/* ── Highlight ── */
+.highlight { color: var(--colors-label-brand); font-weight: var(--font-weight-semibold); }
+.highlight-bg {
+  background: var(--colors-pink-100);
+  color: var(--colors-pink-700);
+  padding: 1px 4px;
+  border-radius: var(--radius-xs);
+  font-weight: var(--font-weight-medium);
+}
+.dark .highlight-bg { background: var(--colors-pink-950); color: var(--colors-pink-300); }

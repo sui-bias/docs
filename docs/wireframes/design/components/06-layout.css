@@ -1,0 +1,112 @@
+/* ══════════════════════════════════════════════════════════════
+   Layout — Section · Divider · List Row · Agreement · Menu · Grid
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Section ── */
+.section {
+  display: flex; flex-direction: column;
+  padding: var(--spacing-5) var(--spacing-4);
+  gap: var(--spacing-4);
+}
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.section-title {
+  font: var(--typography-7-semibold); color: var(--colors-label-neutral);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px; background: var(--colors-line-normal);
+  margin: 0;
+}
+.divider-thick {
+  height: 8px; background: var(--colors-grey-background);
+}
+
+/* ── List Row (범용 — 설정, 프로필 항목 등) ── */
+.list-row {
+  display: flex; align-items: center; gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--colors-background);
+  border-bottom: 1px solid var(--colors-line-normal);
+  cursor: pointer;
+  transition: background var(--motion-duration-fast);
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:hover { background: var(--colors-state-hover); }
+.list-row-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--colors-grey-background);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--colors-icon-normal);
+}
+.list-row-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.list-row-body { flex: 1; min-width: 0; }
+.list-row-title { font: var(--typography-6-medium); color: var(--colors-label-normal); }
+.list-row-sub   { font: var(--typography-7-regular); color: var(--colors-label-alternative); margin-top: 1px; }
+.list-row-trailing {
+  display: flex; align-items: center; gap: var(--spacing-2);
+  color: var(--colors-icon-neutral); flex-shrink: 0;
+}
+.list-row-trailing svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+/* ── Agreement ── */
+.agreement {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--colors-line-normal);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.agreement-all {
+  display: flex; align-items: center; gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--colors-grey-background);
+  font: var(--typography-6-semibold); color: var(--colors-label-normal);
+  cursor: pointer;
+}
+.agreement-divider { height: 1px; background: var(--colors-line-normal); }
+.agreement-list { display: flex; flex-direction: column; padding: var(--spacing-2) 0; }
+.agreement-item {
+  display: flex; align-items: center; gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-4);
+  cursor: pointer;
+}
+.agreement-item-text {
+  flex: 1;
+  font: var(--typography-7-regular); color: var(--colors-label-normal);
+}
+.agreement-item-required { color: var(--colors-label-brand); font-weight: var(--font-weight-medium); }
+
+/* ── Menu (드롭다운 / 액션 메뉴) ── */
+.menu {
+  display: inline-flex; flex-direction: column;
+  background: var(--colors-floated-background);
+  border: 1px solid var(--colors-line-normal);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-1);
+  min-width: 180px;
+}
+.menu-item {
+  display: flex; align-items: center; gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  border: none; background: transparent;
+  border-radius: var(--radius-sm);
+  font: var(--typography-7-medium); color: var(--colors-label-normal);
+  cursor: pointer; text-align: left;
+  transition: background var(--motion-duration-fast);
+}
+.menu-item:hover { background: var(--colors-state-hover); }
+.menu-item.danger { color: var(--colors-label-danger); }
+.menu-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+.menu-divider { height: 1px; background: var(--colors-line-normal); margin: var(--spacing-1) 0; }
+
+/* ── Grid (2열 캐릭터 그리드) ── */
+.char-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+}
